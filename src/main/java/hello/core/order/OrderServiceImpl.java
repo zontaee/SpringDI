@@ -6,6 +6,12 @@ import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+@RequiredArgsConstructor  //최종 롬복사용
 public class OrderServiceImpl implements OrderService {
     //private final MemberRepository memberRepository = new MemoryMemberRepository();
     //private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
@@ -14,12 +20,13 @@ public class OrderServiceImpl implements OrderService {
     //따라서 OCP를 위반하고 있다
     //해결방법 주입을 받는다(DI) AppConfig 생성
     private final MemberRepository memberRepository;
-    private DiscountPolicy discountPolicy;
+    private final DiscountPolicy discountPolicy;
+  /*  @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy
             discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
-    }
+    }*/
     //테스트 용도
     public MemberRepository getMemberRepository() {
         return memberRepository;

@@ -2,8 +2,11 @@ package hello.core.discount;
 
 import hello.core.member.Grade;
 import hello.core.member.Member;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 //VIP 할인정책
+@Component
 public class RateDiscountPolicy implements DiscountPolicy {
     private int discountPercent = 10; //10% 할인
     @Override
