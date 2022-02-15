@@ -248,7 +248,9 @@ clientBean 은 싱글톤이므로, 보통 스프링 컨테이너 생성 시점�
 이제 clientBean 은 프로토타입 빈을 내부 필드에 보관한다. (정확히는 참조값을 보관한다.)
 
 클라이언트 A는 clientBean 을 스프링 컨테이너에 요청해서 받는다.싱글톤이므로 항상 같은 clientBean 이 반환된다.
+
 3. 클라이언트 A는 clientBean.logic() 을 호출한다.
+
 4. clientBean 은 prototypeBean의 addCount() 를 호출해서 프로토타입 빈의 count를 증가한다. 
 count값이 1이 된다.
 
@@ -257,7 +259,9 @@ clientBean 이 반환된다.
 여기서 중요한 점이 있는데, clientBean이 내부에 가지고 있는 프로토타입 빈은 이미 과거에 주입이 끝난
 빈이다. 주입 시점에 스프링 컨테이너에 요청해서 프로토타입 빈이 새로 생성이 된 것이지, 사용 할 때마다
 새로 생성되는 것이 아니다!
+
 5. 클라이언트 B는 clientBean.logic() 을 호출한다.
+
 6. clientBean 은 prototypeBean의 addCount() 를 호출해서 프로토타입 빈의 count를 증가한다. 
 원래 count 값이 1이었으므로 2가 된다.
 
@@ -272,8 +276,11 @@ clientBean 이 반환된다.
 웹 스코프 종류
 
 request: HTTP 요청 하나가 들어오고 나갈 때 까지 유지되는 스코프, 각각의 HTTP 요청마다 별도의 빈 인스턴스가 생성되고, 관리된다.
+
 session: HTTP Session과 동일한 생명주기를 가지는 스코프
+
 application: 서블릿 컨텍스트( ServletContext )와 동일한 생명주기를 가지는 스코프
+
 websocket: 웹 소켓과 동일한 생명주기를 가지는 스코
 
 
